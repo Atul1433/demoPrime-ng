@@ -1,18 +1,71 @@
-import { NgModule } from '@angular/core';
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {Route, RouterModule} from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent }   from './app.component';
+import { ProductService } from './productservice';
 
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {CalendarModule} from 'primeng/calendar';
+import {SliderModule} from 'primeng/slider';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {InputTextModule} from 'primeng/inputtext';
+import {RatingModule} from 'primeng/rating';
+import { RowExpandComponent } from './pages/row-expand/row-expand.component';
+import { OilcompanyComponent } from './pages/oilcompany/oilcompany.component';
+import { MatExpandableRowsComponent } from './pages/mat-expandable-rows/mat-expandable-rows.component';
+import { DemoMaterialModule } from './material-module';
+
+const route:Route[]=[{
+  path:'',component:AppComponent
+},
+{
+  path:'row-expend',component:RowExpandComponent
+},
+{
+  path:'oilcompnay',component:OilcompanyComponent
+},
+{
+  path:'mat',component:MatExpandableRowsComponent
+}
+]
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(route),
+    TableModule,
+    CalendarModule,
+		SliderModule,
+		DialogModule,
+		MultiSelectModule,
+		ContextMenuModule,
+		DropdownModule,
+		ButtonModule,
+		ToastModule,
+    InputTextModule,
+    ProgressBarModule,
+    HttpClientModule,
+    FormsModule,
+    RatingModule,
+    DemoMaterialModule,
+    RouterModule.forRoot([
+      {path:'',component: AppComponent}
+
+		])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [ AppComponent, RowExpandComponent, OilcompanyComponent, MatExpandableRowsComponent ],
+  bootstrap:    [ AppComponent ],
+  providers: [ProductService]
 })
+
 export class AppModule { }
